@@ -1,5 +1,28 @@
 require_relative "methods"
-group = ["alice", "bob", "charlie"]
+
+group = %w[Aaron
+    Angie
+    Bella
+    Cathy
+    Celine
+    Clare
+    Daniel
+    Ellie
+    Jasmine
+    Jason
+    June
+    Luke
+    Matthew
+    Mie
+    Mitchell
+    Nam
+    Natacha
+    Ray
+    Stefano
+    Tash
+    Thang
+    Vivien
+    Winny]
 
 
 

@@ -1,4 +1,6 @@
 # puts "Loaded up the methods file"
+require "colorize"
+require "espeak"
 
 def output_group_size(number)
     if number == 1
@@ -21,11 +23,17 @@ def menu_input_select
 end
 
 def output_random_group_order(collection)
-    collection.shuffle.each do |name| 
-        puts capitalize_multi_word_string(name)
+    collection.shuffle.each_with_index do |name, index| 
+        puts "#{index +1}. #{capitalize_multi_word_string(name)}".colorize(select_random_color)
+        sleep(1)
+        ESpeak::Speech.new(name).speak
     end 
 end 
 
+def select_random_color
+    colours = String.colors.dup - [:black, :light_black]
+    return colours.sample
+end 
 
 def add_member_to_group(arr)
     puts "Enter name:"
@@ -53,3 +61,4 @@ def quit_program
         exit
     end 
 end
+

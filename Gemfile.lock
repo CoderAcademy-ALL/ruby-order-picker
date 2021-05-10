@@ -2,12 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     colorize (0.8.1)
+    espeak-ruby (1.0.4)
 
 PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
   colorize (~> 0.8.1)
+  espeak-ruby (~> 1.0)
 
 BUNDLED WITH
    2.2.17
