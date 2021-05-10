@@ -40,4 +40,16 @@ def capitalize_multi_word_string(str)
     return capitalised_string
 end 
 
-output_random_group_order(["tony hawk", "the rock", "someone cool"])
+def wait_clear(time)
+    sleep(time)
+    system "clear"
+end 
+
+def quit_program
+    puts "type yes to quit"
+    quit_choice = gets.chomp.downcase
+    if quit_choice == 'yes'
+        puts "Thanks for using group generator 9000"
+        exit
+    end 
+end
