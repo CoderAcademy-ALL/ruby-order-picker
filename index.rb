@@ -1,33 +1,24 @@
-group = ["alice"]
+require_relative "methods"
+group = ["alice", "bob", "charlie"]
+
+
+
 
 while true 
-    puts "There are #{group.length == 1 ? '1 member':  group.length.to_s + 'members'} in the group"
-    puts "Press 1) to add a member to the group"
-    puts "Press 2) display a random group"
-    puts "Press 3) to select random user"
-    puts "Press 4) to quit"
-    #take input from user
-    menu_input = gets.chomp.to_i
+    #TODO: Fix grammar
+    group_length = group.length
+    output_group_size(group_length)
 
-    case menu_input
+    case menu_input_select
     when 1
-        puts "Enter name:"
-        name = gets.chomp
-        group.push(name)
+     add_member_to_group(group)
     when 2 
         puts "Random group output:"
         random_order_loop_running = true
         while random_order_loop_running
-            # copied_group = group.clone 
-            # while copied_group.length > 0
-            #     random_index = rand(copied_group.length - 1)
-            #     puts copied_group[random_index].capitalize
-            #     copied_group.delete_at(random_index)
-            # end 
+          
             
-            group.shuffle.each do |name| 
-                puts name.capitalize
-            end 
+            output_random_group_order(group)
             
             puts "press 1 to go back"
             puts "press 2 to quit"
