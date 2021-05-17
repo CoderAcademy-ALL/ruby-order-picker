@@ -2,7 +2,8 @@ require_relative("../group")
 
 describe 'Group' do 
     before(:each) do 
-        @group = Group.new("Test Group")
+        @group = Group.new("Test Group", "./groups/test-group.txt")
+        @names = File.readlines("./groups/test-group.txt").map {|name| name.strip}
     end
     
     it 'should be an instance of a Group' do 
@@ -15,6 +16,12 @@ describe 'Group' do
     
     it 'should have an array of names' do 
         expect(@group.names_array).to be_an_instance_of(Array)
+    end
+    
+    describe '.names_array' do 
+        it 'should contain the same names as the text file' do 
+            expect(@group.names_array).to include(*@names)
+        end 
     end 
 
     describe '.randomise_order' do 

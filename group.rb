@@ -32,6 +32,12 @@ class Group
             array = []
         end 
         return array 
+    end
+    
+    def save 
+        File.open(@path, "w+") do |file|
+            file.puts(@names_array)
+        end
     end 
 
     private 
@@ -41,7 +47,8 @@ class Group
 
 end 
 
-test_group = Group.new("Test Group", './groups/test-group.txt')
-test_group.output_random_array
 
-puts "after error"
+
+# test_group = Group.new("test group", "./groups/test-group.txt")
+# test_group.add_name("Bob Smith")
+# test_group.save

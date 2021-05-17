@@ -53,11 +53,12 @@ def wait_clear(time)
     system "clear"
 end 
 
-def quit_program
+def quit_program(group)
     puts "type yes to quit"
     quit_choice = gets.chomp.downcase
     if quit_choice == 'yes'
-        puts "Thanks for using group generator 9000"
+        group.save
+        puts "Updated #{group.name} thanks for using"
         exit
     end 
 end
