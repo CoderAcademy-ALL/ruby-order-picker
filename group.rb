@@ -1,3 +1,4 @@
+require_relative "methods"
 class Group
     attr_reader :name, :names_array
     
@@ -12,9 +13,12 @@ class Group
     end
 
     def output_random_array
-        randomise_order.each do |name|
-            puts name 
-        end 
+        randomise_order.each_with_index do |name, index|
+            puts "#{index +1}. #{capitalize_multi_word_string(name)}".colorize(select_random_color)
+            sleep(0.5)
+        end
+        puts "\n"
+        puts "\n"
     end
 
     def add_name(name)

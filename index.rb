@@ -1,6 +1,6 @@
-require_relative "methods"
 require_relative "group"
-# require_relative "command_line_args"
+
+#handling args in file for now to avoid global variables
 
 if ARGV.length > 0
     flag, *rest = ARGV
