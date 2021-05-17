@@ -13,8 +13,9 @@ class Group
     end
 
     def output_random_array
+        #TODO FIX CAPITALISATION BUG
         randomise_order.each_with_index do |name, index|
-            puts "#{index +1}. #{capitalize_multi_word_string(name)}".colorize(select_random_color)
+            puts "#{index +1}. #{name}".colorize(select_random_color)
             sleep(0.5)
         end
         puts "\n"

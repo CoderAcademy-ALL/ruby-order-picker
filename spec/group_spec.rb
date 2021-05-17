@@ -5,6 +5,24 @@ describe 'Group' do
         @group = Group.new("Test Group", "./groups/test-group.txt")
         @names = File.readlines("./groups/test-group.txt").map {|name| name.strip}
     end
+
+    after(:all) do 
+        test_group_array = [
+            "Chris Rock",
+            "Jigsaw",
+            "Bill Gates",
+            "Elon Musk",
+            "Ted Bundy",
+            "Scott Morisson",
+            "Alex B",
+            "Ed Gine",
+            "OJ Simpson" 
+        ]
+        
+        File.open("./groups/test-group.txt", "w+") do |file|
+            file.puts(test_group_array)
+        end 
+    end 
     
     it 'should be an instance of a Group' do 
         expect(@group).to be_a Group
@@ -37,7 +55,7 @@ describe 'Group' do
             expect(@group.randomise_order).to include(*@group.names_array)
         end
         
-        describe '.output_random_array' do 
+    describe '.output_random_array' do 
             it 'should be defined' do 
                 expect(defined? @group.output_random_array).to eq("method")
             end
@@ -47,7 +65,7 @@ describe 'Group' do
             end 
         end
         
-        describe '.add_name' do 
+    describe '.add_name' do 
             it 'should be defined' do 
                 expect(defined? @group.add_name).to eq("method")
             end
@@ -56,6 +74,24 @@ describe 'Group' do
                 expect(@group.add_name("Bob").length).to be(length + 1)
             end 
         end 
+    end
+    
+    describe '.save' do
+        
+        it 'should update the length of array we get back from the file path' do 
+            @group.add_name("Bob")
+            @group.save
+            updated_names = File.readlines("./groups/test-group.txt").map {|name| name.strip}
+            expect(updated_names.length).to be(@names.length + 1)
+        end
+        
+        it 'should update the file with the most recently added name' do 
+            @group.add_name("Alice")
+            @group.save
+            updated_names = File.readlines("./groups/test-group.txt").map {|name| name.strip}
+            expect(updated_names.last).to eq("Alice")
+        end 
+
     end 
 
 end 
